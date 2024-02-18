@@ -13,6 +13,13 @@ let priceTotal = 0;
 const ticketPrice = 550;
 //coupon apply button===========================
 const apply = document.getElementById('apply-btn');
+//next button ======================================
+const nextBtn = document.getElementById('Next-button');
+// const inputValue = document.getElementById("number");  
+// inputValue.addEventListener('keyup',function(){
+//     console.log(inputValue.value.length);
+// })
+
 
 let count = 0;
 for(let i = 0; i<seats.length ; i++){
@@ -38,14 +45,14 @@ for(let i = 0; i<seats.length ; i++){
         const ticketCategory = document.getElementById("seat-category")
         const ticketName = seat.querySelector("h1");
         const ticketNameText = ticketName.innerText;
-        console.log(ticketNameText);
+       
         const p = document.createElement("p");
         p.innerText=ticketNameText;
         const p2 = document.createElement("p");
         p2.innerText="Economoy";
         const p3 = document.createElement("p");
         p3.innerText=ticketPrice ;
-        // console.log(typeof p3);
+       
         const li = document.createElement("li")
         li.appendChild(p);
         li.appendChild(p2);
@@ -55,8 +62,10 @@ for(let i = 0; i<seats.length ; i++){
         //total price  update section
         const sumOfPrice = priceTotal +=ticketPrice;
          totalPrice.innerText = sumOfPrice;
-         grandTotal.innerText = sumOfPrice;
-
+         grandTotal.innerText = sumOfPrice
+         
+      
+      
          //applying coupon================
          if(count === 4 ){
             apply.removeAttribute("disabled","");
@@ -64,6 +73,21 @@ for(let i = 0; i<seats.length ; i++){
             apply.style.color = '#FFFFFF';
 
     }
+
+    
+    // console.log(inputValue.length);
+    // const inputLength = inputValue.length
+     if(count > 0 ){
+
+        nextBtn.removeAttribute("disabled","")
+        nextBtn.addEventListener('click',function(){
+        const input = document.getElementById("number").value;  
+        
+        })
+     }
+    
+    //enable the next button
+ 
 
        
        
@@ -74,12 +98,35 @@ for(let i = 0; i<seats.length ; i++){
 
 
 //coupon applying 
+//coupon field
+const applyCouponInput = document.getElementById("apply-couponInput");
+const discount = document.getElementById("discount");
+const discountPrice = document.getElementById('discount-price');
 
 apply.addEventListener('click',function(){
-    console.log("hi");
+    const totalPRICE = totalPrice.innerText;
+    const totalAmount = parseInt(totalPRICE);
     const inputField = document.getElementById('apply-field');
     const inputFieldValue = inputField.value;
-    console.log(inputFieldValue);
-    console.log(inputFieldValue);
-    console.log(inputFieldValue);
+    const couponCode = inputFieldValue.split(' ').join("").toUpperCase();
+    
+    
+    // console.log(couponCode);
+    if(couponCode === "NEW15" || couponCode === "COUPLE20"){
+        if(couponCode === "NEW15"){
+            discountPrice.innerText = totalAmount *(15/100);
+            grandTotal.innerText = totalAmount - totalAmount *(15/100);
+            discount.classList.remove("hidden")
+        }else if(couponCode ==="COUPLE20"){
+            discountPrice.innerText = totalAmount *(20/100);
+            grandTotal.innerText = totalAmount - totalAmount *(20/100);
+            discount.classList.remove("hidden")
+        }
+        applyCouponInput.classList.add("hidden")
+
+    }else{
+        alert("enter a valid input")
+    }
+    
+    
 })
