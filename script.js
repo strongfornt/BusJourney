@@ -15,13 +15,14 @@ const ticketPrice = 550;
 const apply = document.getElementById('apply-btn');
 //next button ======================================
 const nextBtn = document.getElementById('Next-button');
-// const inputValue = document.getElementById("number");  
+const inputValue = document.getElementById("number");  
 // inputValue.addEventListener('keyup',function(){
 //     console.log(inputValue.value.length);
 // })
 
 
 let count = 0;
+let numCount = 0;
 for(let i = 0; i<seats.length ; i++){
     const seat = seats[i];
     seat.addEventListener('click',function(){
@@ -74,22 +75,23 @@ for(let i = 0; i<seats.length ; i++){
 
     }
 
-    
-    // console.log(inputValue.length);
-    // const inputLength = inputValue.length
-     if(count > 0 ){
 
-        nextBtn.removeAttribute("disabled","")
-        nextBtn.addEventListener('click',function(){
-        const input = document.getElementById("number").value;  
-        
-        })
-     }
+    //check if count greater than 0 and input greater then 0==========
+    inputValue.addEventListener('input',function(){
+        if(count > 0 && inputValue.value.length > 0 ){
+            nextBtn.removeAttribute("disabled","") ;
+            nextBtn.addEventListener('click',function(){
+                 document.getElementById('number').value='';
+                 document.getElementById('name').value='';
+                 document.getElementById('email').value='';
+                
+            })
+            
+        }
+    })
     
-    //enable the next button
- 
-
-       
+    
+    
        
        }
     })
@@ -122,10 +124,12 @@ apply.addEventListener('click',function(){
             grandTotal.innerText = totalAmount - totalAmount *(20/100);
             discount.classList.remove("hidden")
         }
-        applyCouponInput.classList.add("hidden")
+        applyCouponInput.classList.add("hidden");
 
     }else{
-        alert("enter a valid input")
+        document.getElementById('apply-field').value ="";
+        alert("Please Enter a valid coupon");
+        
     }
     
     
