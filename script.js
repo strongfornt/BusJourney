@@ -80,4 +80,6 @@ apply.addEventListener('click',function(){
     const inputField = document.getElementById('apply-field');
     const inputFieldValue = inputField.value;
     console.log(inputFieldValue);
+    console.log(inputFieldValue);
+    console.log(inputFieldValue);
 })
