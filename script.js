@@ -115,3 +115,9 @@ apply.addEventListener("click", function () {
     alert("Please Enter a valid coupon");
   }
 });
+
+//reload my page using continue button===
+const continueButton = document.getElementById('continue-button');
+continueButton.addEventListener('click',function(){
+    location.reload();
+})
