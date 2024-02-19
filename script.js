@@ -96,14 +96,15 @@ apply.addEventListener("click", function () {
   const totalAmount = parseInt(totalPRICE);
   const inputField = document.getElementById("apply-field");
   const inputFieldValue = inputField.value;
-  const couponCode = inputFieldValue.split(" ").join("").toUpperCase();
+  const couponCode = inputFieldValue;
+//   .split(" ").join("").toUpperCase()
 
-  if (couponCode === "NEW15" || couponCode === "COUPLE20") {
+  if (couponCode === "NEW15" || couponCode === "Couple 20") {
     if (couponCode === "NEW15") {
       discountPrice.innerText = totalAmount * (15 / 100);
       grandTotal.innerText = totalAmount - totalAmount * (15 / 100);
       discount.classList.remove("hidden");
-    } else if (couponCode === "COUPLE20") {
+    } else if (couponCode === "Couple 20") {
       discountPrice.innerText = totalAmount * (20 / 100);
       grandTotal.innerText = totalAmount - totalAmount * (20 / 100);
       discount.classList.remove("hidden");
